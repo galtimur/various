@@ -1,0 +1,53 @@
+claude-3 haiku
+claude-3 opus
+claude-3.5 haiku
+claude-3.5 sonnet
+codellama (13b)
+codellama (34b)
+codellama (70b)
+codellama (7b)
+codet5 (220m)
+deepseek coder (1.3b)
+deepseek coder (33b)
+deepseek coder (6.7b)
+deepseek-r1 (671b)
+deepseek-r1 (70b)
+deepseek-v3 (671b)
+gemini-1.5 flash
+gemini-1.5 pro
+gemma-2b
+gemma-7b
+gpt-3.5
+gpt-3.5 turbo
+gpt-3.5 turbo 0613
+gpt-3.5 turbo 1106
+gpt-4
+gpt-4 turbo
+gpt-4o
+gpt-4o mini
+gpt-o1
+gpt-o1 mini
+llama-2 (13b)
+llama-2 (70b)
+llama-2 (7b)
+llama-3 (70b)
+llama-3 (8b)
+llama-3.1 (405b)
+llama-3.1 (70b)
+llama-3.1 (8b)
+llama-3.2 (1b)
+llama-3.2 (3b)
+llama-3.3 (70b)
+mistral (7b)
+mixtral (8x22b)
+mixtral (8x7b)
+qwen-2 (72b)
+qwen-2.5 (72b)
+qwen-2.5 (7b)
+qwen-2.5 coder (0.5b)
+qwen-2.5 coder (1.5b)
+qwen-2.5 coder (14b)
+qwen-2.5 coder (32b)
+qwen-2.5 coder (3b)
+qwen-2.5 coder (7b)
+qwq (32b)
