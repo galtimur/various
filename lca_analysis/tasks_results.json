@@ -53,8 +53,8 @@
         "Llama-3.3 (70B)": 6.415,
         "Mistral (7B)": 4.458,
         "Mixtral (8x7B)": 5.376,
-        "GPT-4o1 mini": 6.712,
-        "GPT-4o1 preview": 7.66,
+        "GPT-o1 mini": 6.712,
+        "GPT-o1": 7.66,
         "Qwen-2.5 coder (32B)": 6.038,
         "QwQ (32B)": 3.381
     },
@@ -70,8 +70,8 @@
         "Llama-3 (8B)": 0.14,
         "Mistral (7B)": 0.2,
         "Mixtral (8x7B)": 0.19,
-        "GPT-4o1": 0.36,
-        "GPT-4o1 mini": 0.32,
+        "GPT-o1": 0.36,
+        "GPT-o1 mini": 0.32,
         "Qwen-2.5 coder (32B)": 0.38
     },
     "module_sum": {
@@ -93,14 +93,14 @@
         "Mistral (7B)": 46.23,
         "Mixtral (8x22B)": 42.24,
         "Mixtral (8x7B)": 40.89,
-        "GPT-4o1": 66.33,
+        "GPT-o1": 66.33,
         "Qwen-2.5 (72B)": 66.37
     },
     "plcc_proj_lev_path_dist_em": {
         "CodeLlama (7B)": 0.43,
-        "DeepSeek-Сoder (1.3B)": 0.38,
-        "DeepSeek-Сoder (33B)": 0.46,
-        "DeepSeek-Сoder (6.7B)": 0.43,
+        "DeepSeek coder (1.3B)": 0.38,
+        "DeepSeek coder (33B)": 0.46,
+        "DeepSeek coder (6.7B)": 0.43,
         "Llama-3.1 (8B)": 0.43,
         "Llama-3.2 (1B)": 0.35,
         "Llama-3.2 (3B)": 0.39,
