@@ -2,11 +2,11 @@
     "gpt-4o": {
         "num_tasks": 5,
         "tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ],
         "missed_tasks": [
             "plcc_proj_lev_path_dist_em"
@@ -16,7 +16,7 @@
         "num_tasks": 4,
         "tasks": [
             "lib_code_gen_200",
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg",
             "bug_loc_paths_f1"
         ],
@@ -28,8 +28,8 @@
     "llama-3.1 (8b)": {
         "num_tasks": 4,
         "tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
             "cmg",
             "bug_loc_paths_f1"
         ],
@@ -41,27 +41,27 @@
     "gpt-o1": {
         "num_tasks": 4,
         "tasks": [
-            "module_sum",
             "lib_code_gen_200",
+            "module_sum",
             "cmg",
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "plcc_proj_lev_path_dist_em",
+            "ci_build_repair"
         ]
     },
     "gemini-1.5 pro": {
         "num_tasks": 3,
         "tasks": [
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg",
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "plcc_proj_lev_path_dist_em"
+            "plcc_proj_lev_path_dist_em",
+            "lib_code_gen_200"
         ]
     },
     "gpt-4o mini": {
@@ -73,21 +73,21 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "plcc_proj_lev_path_dist_em",
+            "ci_build_repair"
         ]
     },
     "llama-3.1 (70b)": {
         "num_tasks": 3,
         "tasks": [
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg",
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "plcc_proj_lev_path_dist_em"
+            "plcc_proj_lev_path_dist_em",
+            "lib_code_gen_200"
         ]
     },
     "llama-3.2 (3b)": {
@@ -99,16 +99,16 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "CI_build_repair"
+            "ci_build_repair",
+            "lib_code_gen_200"
         ]
     },
     "claude-3 opus": {
         "num_tasks": 3,
         "tasks": [
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "cmg"
+            "ci_build_repair",
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
             "module_sum",
@@ -120,13 +120,13 @@
         "num_tasks": 3,
         "tasks": [
             "module_sum",
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "codellama (7b)": {
@@ -137,21 +137,21 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "gpt-4": {
         "num_tasks": 3,
         "tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "cmg"
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -159,12 +159,12 @@
         "num_tasks": 3,
         "tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "cmg"
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -172,25 +172,25 @@
         "num_tasks": 3,
         "tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "cmg"
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
     "qwen-2.5 coder (32b)": {
         "num_tasks": 3,
         "tasks": [
-            "lib_code_gen_200",
             "plcc_proj_lev_path_dist_em",
-            "cmg"
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
             "module_sum",
-            "CI_build_repair",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -202,9 +202,9 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
-            "cmg"
+            "cmg",
+            "ci_build_repair"
         ]
     },
     "gpt-3.5 turbo 1106": {
@@ -215,35 +215,35 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
+            "lib_code_gen_200"
         ]
     },
     "claude-3 haiku": {
         "num_tasks": 2,
         "tasks": [
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg"
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "llama-3.1 (405b)": {
         "num_tasks": 2,
         "tasks": [
-            "CI_build_repair",
+            "ci_build_repair",
             "cmg"
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "deepseek coder (1.3b)": {
@@ -254,9 +254,9 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "deepseek coder (33b)": {
@@ -267,9 +267,9 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "deepseek coder (6.7b)": {
@@ -280,9 +280,9 @@
         ],
         "missed_tasks": [
             "module_sum",
-            "lib_code_gen_200",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "bug_loc_paths_f1",
+            "lib_code_gen_200"
         ]
     },
     "deepseek-v3 (671b)": {
@@ -292,10 +292,10 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "lib_code_gen_200"
         ]
     },
     "llama-3.3 (70b)": {
@@ -305,22 +305,22 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "lib_code_gen_200"
         ]
     },
     "gpt-o1 mini": {
         "num_tasks": 2,
         "tasks": [
-            "lib_code_gen_200",
-            "cmg"
+            "cmg",
+            "lib_code_gen_200"
         ],
         "missed_tasks": [
             "module_sum",
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -331,9 +331,9 @@
             "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
             "cmg",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -344,9 +344,9 @@
             "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "CI_build_repair",
             "plcc_proj_lev_path_dist_em",
             "cmg",
+            "ci_build_repair",
             "bug_loc_paths_f1"
         ]
     },
@@ -356,11 +356,11 @@
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "plcc_proj_lev_path_dist_em",
+            "cmg"
         ]
     },
     "qwen-2 (72b)": {
@@ -369,11 +369,11 @@
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "plcc_proj_lev_path_dist_em",
+            "cmg"
         ]
     },
     "qwen-2.5 (7b)": {
@@ -382,11 +382,11 @@
             "bug_loc_paths_f1"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "plcc_proj_lev_path_dist_em",
+            "cmg"
         ]
     },
     "codellama (13b)": {
@@ -395,11 +395,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "codellama (34b)": {
@@ -408,11 +408,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "codet5 (220m)": {
@@ -421,11 +421,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "gemini-1.5 flash": {
@@ -434,11 +434,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "gpt-3.5 turbo 0613": {
@@ -447,11 +447,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "gpt-4 turbo": {
@@ -460,11 +460,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "qwq (32b)": {
@@ -473,11 +473,11 @@
             "cmg"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
             "module_sum",
-            "CI_build_repair",
-            "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "ci_build_repair",
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "plcc_proj_lev_path_dist_em"
         ]
     },
     "gpt-3.5 turbo": {
@@ -486,11 +486,11 @@
             "lib_code_gen_200"
         ],
         "missed_tasks": [
-            "cmg",
             "module_sum",
-            "CI_build_repair",
+            "ci_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "codellama (70b)": {
@@ -499,11 +499,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "gemma-2b": {
@@ -512,11 +512,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "gemma-7b": {
@@ -525,11 +525,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "gpt-3.5": {
@@ -538,11 +538,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "llama-2 (13b)": {
@@ -551,11 +551,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "llama-2 (70b)": {
@@ -564,11 +564,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "llama-2 (7b)": {
@@ -577,11 +577,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "mixtral (8x22b)": {
@@ -590,11 +590,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "qwen-2.5 (72b)": {
@@ -603,11 +603,11 @@
             "module_sum"
         ],
         "missed_tasks": [
+            "ci_build_repair",
             "lib_code_gen_200",
-            "cmg",
-            "CI_build_repair",
+            "bug_loc_paths_f1",
             "plcc_proj_lev_path_dist_em",
-            "bug_loc_paths_f1"
+            "cmg"
         ]
     },
     "llama-3.2 (1b)": {
@@ -616,11 +616,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     },
     "qwen-2.5 coder (0.5b)": {
@@ -629,11 +629,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     },
     "qwen-2.5 coder (1.5b)": {
@@ -642,11 +642,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     },
     "qwen-2.5 coder (14b)": {
@@ -655,11 +655,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     },
     "qwen-2.5 coder (3b)": {
@@ -668,11 +668,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     },
     "qwen-2.5 coder (7b)": {
@@ -681,11 +681,11 @@
             "plcc_proj_lev_path_dist_em"
         ],
         "missed_tasks": [
-            "lib_code_gen_200",
-            "cmg",
             "module_sum",
-            "CI_build_repair",
-            "bug_loc_paths_f1"
+            "lib_code_gen_200",
+            "bug_loc_paths_f1",
+            "ci_build_repair",
+            "cmg"
         ]
     }
 }
