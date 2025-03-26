@@ -14,7 +14,7 @@
         "Qwen-2 (72B)": 0.483,
         "Qwen-2.5 (7B)": 0.517
     },
-    "CI_builr_repair": {
+    "CI_build_repair": {
         "Claude-3.5 Sonnet": 24,
         "Claude-3 Haiku": 2,
         "Claude-3 Opus": 14,
