@@ -15,15 +15,15 @@
         "Qwen-2.5 (7B)": 0.517
     },
     "CI_build_repair": {
-        "Claude-3.5 Sonnet": 24,
-        "Claude-3 Haiku": 2,
-        "Claude-3 Opus": 14,
-        "DeepSeek-R1 (671B)": 23,
-        "Gemini-1.5 Pro": 10,
-        "GPT-4o": 10,
-        "Llama-3.1 (405B)": 4,
-        "Llama-3.1 (70B)": 5,
-        "Llama-3.1 (8B)": 0
+        "Claude-3.5 Sonnet": 0.24,
+        "Claude-3 Haiku": 0.02,
+        "Claude-3 Opus": 0.14,
+        "DeepSeek-R1 (671B)": 0.23,
+        "Gemini-1.5 Pro": 0.10,
+        "GPT-4o": 0.10,
+        "Llama-3.1 (405B)": 0.04,
+        "Llama-3.1 (70B)": 0.05,
+        "Llama-3.1 (8B)": 0.0
     },
     "cmg": {
         "Claude-3 Haiku": 5.045,
@@ -86,6 +86,7 @@
         "Qwen-2.5 coder (32B)": 0.381
     },
     "module_sum": {
+        "Claude-3.5 Sonnet": 47.71,
         "CodeLlama (70B)": 37.23,
         "CodeLlama (7B)": 38.06,
         "DeepSeek-R1 (671B)": 64.87,
