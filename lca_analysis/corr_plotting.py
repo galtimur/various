@@ -1,8 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
-import scipy.stats as stats
+import pandas as pd
+import seaborn as sns
 
 
 def plot_ranks(results: pd.DataFrame):
@@ -57,6 +56,7 @@ def plot_corr_matrix(results: pd.DataFrame):
     plt.tight_layout()
     plt.show()
 
+
 def plot_radar_chart(results: pd.DataFrame):
     labels = results.columns  # Task names (axes)
     num_axes = len(labels)
@@ -77,6 +77,6 @@ def plot_radar_chart(results: pd.DataFrame):
     ax.set_xticklabels(labels)
 
     plt.title("Task Performances", size=15, pad=20)
-    ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+    ax.legend(loc="upper right", bbox_to_anchor=(1.3, 1.1))
 
     plt.show()
