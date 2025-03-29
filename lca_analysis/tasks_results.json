@@ -1,5 +1,5 @@
 {
-    "bug_loc_paths_f1": {
+    "Bug localization": {
         "Claude-3.5 Haiku": 0.583,
         "Claude-3.5 Sonnet": 0.523,
         "DeepSeek-R1 (70B)": 0.548,
@@ -14,7 +14,7 @@
         "Qwen-2 (72B)": 0.483,
         "Qwen-2.5 (7B)": 0.517
     },
-    "CI_build_repair": {
+    "CI-build-repair": {
         "Claude-3.5 Sonnet": 0.24,
         "Claude-3 Haiku": 0.02,
         "Claude-3 Opus": 0.14,
@@ -26,7 +26,7 @@
         "Llama-3.1 (70B)": 0.05,
         "Llama-3.1 (8B)": 0.0
     },
-    "cmg": {
+    "CMG": {
         "Claude-3 Haiku": 5.045,
         "Claude-3 Opus": 7.656,
         "Claude-3.5 Sonnet": 6.134,
@@ -59,7 +59,7 @@
         "Qwen-2.5 coder (32B)": 6.038,
         "QwQ (32B)": 3.381
     },
-    "lib_code_gen_all": {
+    "Library based CG": {
         "Claude-3.5 Haiku": 0.402,
         "Claude-3.5 Sonnet": 0.477,
         "Claude-3.7 Sonnet": 0.510,
@@ -86,7 +86,7 @@
         "Mixtral (8x7B)": 0.137,
         "Qwen-2.5 coder (32B)": 0.381
     },
-    "module_sum_16k": {
+    "Module summarization": {
         "Claude-3.5 Sonnet": 0.66,
         "Claude-3 Haiku": 0.6488,
         "Claude-3 Opus": 0.6542,

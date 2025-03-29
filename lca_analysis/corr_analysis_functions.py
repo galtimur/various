@@ -16,7 +16,7 @@ def get_models_set(task_dict):
 def model_task_count(tasks_dict):
     # Calculate number of tasks, in which models are used
     all_tasks = set(tasks_dict.keys())
-    all_tasks.remove("plcc_proj_lev_path_dist_em")
+    # all_tasks.remove("plcc_proj_lev_path_dist_em")
     model_analysis = {}
 
     for task, model_scores in tasks_dict.items():
