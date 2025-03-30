@@ -52,6 +52,9 @@ def plot_corr_matrix(results: pd.DataFrame):
         fmt=".2f",
     )
     axes.set_title("Spearman Correlation Between Tasks", fontsize=16)
+    axes.set_xticklabels(axes.get_xticklabels(), rotation=45, ha="right")
+    axes.set_yticklabels(axes.get_yticklabels(), rotation=45)
+
 
     plt.tight_layout()
     plt.show()
