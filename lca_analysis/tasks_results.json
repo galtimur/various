@@ -87,7 +87,7 @@
         "Qwen-2.5 coder (32B)": 0.381
     },
     "Module summarization": {
-        "Claude-3.5 Sonnet": 0.66,
+        "Claude-3.5 Sonnet": 0.6613,
         "Claude-3 Haiku": 0.6488,
         "Claude-3 Opus": 0.6542,
         "DeepSeek-R1 (671B)": 0.6662,
