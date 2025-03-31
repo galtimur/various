@@ -38,7 +38,6 @@
         "CodeLlama (13B)": 0.23099,
         "CodeLlama (34B)": 0.24632,
         "CodeLlama (7B)": 0.26638,
-        "CodeT5 (220M)": 0.11862,
         "DeepSeek coder (1.3B)": 0.22449,
         "DeepSeek coder (33B)": 0.2908,
         "DeepSeek coder (6.7B)": 0.28567,
@@ -62,7 +61,6 @@
         "Mistral (7B)": 0.30719,
         "Mixtral (8x7B)": 0.3198,
         "Qwen-2.5 coder (32B)": 0.3374,
-        "QwQ (32B)": 0.1407
     },
     "Library based CG": {
         "Claude-3.5 Haiku": 0.402,
