@@ -38,7 +38,6 @@
         "CodeLlama (13B)": 0.23099,
         "CodeLlama (34B)": 0.24632,
         "CodeLlama (7B)": 0.26638,
-        "DeepSeek coder (1.3B)": 0.22449,
         "DeepSeek coder (33B)": 0.2908,
         "DeepSeek coder (6.7B)": 0.28567,
         "DeepSeek-R1 (671B)": 0.3494,
@@ -46,7 +45,6 @@
         "Gemini-1.5 Flash": 0.3464,
         "Gemini-1.5 Pro": 0.3487,
         "GPT-3.5 turbo 0613": 0.26664,
-        "GPT-3.5 turbo 1106": 0.20698,
         "GPT-4": 0.3262,
         "GPT-4 turbo": 0.3439,
         "GPT-4o": 0.3481,
@@ -60,7 +58,7 @@
         "Llama-3.3 (70B)": 0.3354,
         "Mistral (7B)": 0.30719,
         "Mixtral (8x7B)": 0.3198,
-        "Qwen-2.5 coder (32B)": 0.3374,
+        "Qwen-2.5 coder (32B)": 0.3374
     },
     "Library based CG": {
         "Claude-3.5 Haiku": 0.402,
