@@ -40,10 +40,10 @@ def plot_ranks(results: pd.DataFrame):
 def plot_corr_matrix(results: pd.DataFrame):
     task_spearman_corr = results.corr(method="spearman")
     fig, axes = plt.subplots(1, 1, figsize=(10, 6))
-    mask = np.triu(np.ones_like(task_spearman_corr), k=0).T
+    # mask = np.triu(np.ones_like(task_spearman_corr), k=0).T
     sns.heatmap(
-        task_spearman_corr[:-1],
-        mask=mask[:-1],
+        task_spearman_corr, # [:-1],
+        # mask=mask[:-1],
         annot=True,
         cmap="coolwarm",
         vmin=-1,
