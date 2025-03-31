@@ -41,7 +41,7 @@
         "CodeT5 (220M)": 0.11862,
         "DeepSeek coder (1.3B)": 0.22449,
         "DeepSeek coder (33B)": 0.2908,
-        "DeepSeek coder (6.7B)": 0.58567,
+        "DeepSeek coder (6.7B)": 0.28567,
         "DeepSeek-R1 (671B)": 0.3494,
         "DeepSeek-V3 (671B)": 0.3576,
         "Gemini-1.5 Flash": 0.3464,
