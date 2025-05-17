@@ -25,7 +25,7 @@ def convert_results(result):
 #%%
 
 # output_directory = "srt_to_transl"
-input_folder = "C:/Timur/Films/Sankt Maik/S1"
+input_folder = ""
 output_folder = input_folder
 
 #%%
