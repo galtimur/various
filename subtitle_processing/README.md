@@ -57,5 +57,60 @@ python extract_audio_script.py --input_folder /path/to/videos --overwrite
 
 ## Subtitles generation 
 
-- License
+A utility script to generate SRT subtitles for multiple MP3 files using OpenAI's Whisper speech recognition model.
+
+### Overview
+
+This script automates the process of creating subtitles for audio files by:
+- Processing all MP3 files in a specified directory
+- Using Whisper's speech recognition capabilities
+- Generating subtitle files in SRT format with word-level timestamps
+- Supporting custom formatting options for subtitles
+
+### Usage
+
+Basic usage:
+
+```bash
+python generate_subtitles.py --input_folder /path/to/mp3s
+```
+
+#### Arguments
+
+| Argument | Description                                              | Default |
+|----------|----------------------------------------------------------|---------|
+| `--input_folder` | Path to folder containing MP3 files              | *Required* |
+| `--output_folder` | Path to output folder for subtitle files        | Same as input folder |
+| `--gpu_id` | GPU ID to use for processing                           | 0 |
+| `--max_line_count` | Maximum lines in a single subtitle             | 2 |
+| `--max_words_per_line` | Maximum words in a single subtitle line    | 15 |
+| `--model` | Whisper model to use (tiny, small, medium, large, turbo) | turbo |
+| `--language` | Language code (e.g., en, ru, fr, de)                  | auto-detect |
+| `--parallel` | Flag to process files in parallel (Not used now)      | False |
+| `--max_workers` | Maximum number of parallel workers (Not used now)  | 1 |
+
+### Examples
+
+Generate Russian subtitles for all MP3 files in a folder:
+```bash
+python generate_subtitles.py --input_folder /path/to/mp3s --language ru
+```
+
+Use a specific model and GPU:
+```bash
+python generate_subtitles.py --input_folder /path/to/mp3s --model medium --gpu_id 1
+```
+
+Customize subtitle formatting:
+```bash
+python generate_subtitles.py --input_folder /path/to/mp3s --max_line_count 3 --max_words_per_line 10
+```
+
+### Output
+
+The script generates SRT subtitle files with the same base name as the input MP3 files. For example:
+- Input: `/path/to/mp3s/lecture.mp3`
+- Output: `/path/to/mp3s/lecture.srt` (or in the specified output folder)
+
+License
 MIT License
