@@ -5,7 +5,7 @@ from pathlib import Path
 from audio_extract import extract_audio
 
 
-input_folder = Path("C:/Timur/Films/Sankt Maik/S2")
+input_folder = Path("")
 output_folder = input_folder
 video_file_ext = "avi"
 
