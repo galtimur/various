@@ -11,6 +11,7 @@ from pathlib import Path
 from tqdm import tqdm
 import logging
 import concurrent.futures
+import srt
 
 # Set up logging
 logging.basicConfig(
@@ -21,6 +22,30 @@ logging.basicConfig(
         logging.StreamHandler()
     ],
 )
+
+def clean_subtitles(sub_folder: str | Path, output_dir: str | Path = None):
+    """Clean up subtitles text in the folder"""
+
+    with open("hallucinations_ru.txt", "r", encoding="utf-8") as f:
+        halluc = f.read().splitlines()
+
+    sub_files = list(sub_folder.glob("*.srt"))
+    num_hal = 0
+    for srt_file in sub_files:
+        with open(srt_file, "r", encoding="utf-8") as f:
+            subs_txt = f.read()
+        subs = srt.parse(subs_txt)
+        subs_clean = []
+        for sub in subs:
+            if not (sub.content in halluc):
+                subs_clean.append(sub)
+            else:
+                num_hal += 1
+        subs_clean = srt.sort_and_reindex(subs_clean)
+        subs_clean = srt.compose(subs_clean, reindex=False)
+        with open(output_dir / srt_file.name, "w", encoding="utf-8") as f:
+            f.write(subs_clean)
+    print(f'Number of hallucinations = {num_hal}')
 
 
 def generate_subtitle(mp3_file: str | Path, output_dir: str | Path, args):
@@ -101,6 +126,14 @@ def main():
         help="Process files in parallel (may require multiple GPUs)",
     )
     parser.add_argument(
+        "--clean",
+        dest="clean",
+        action="store_const",
+        const=True,
+        default=True,
+        help="Enable cleaning the subtitles from hallucinations (default: True)",
+    )
+    parser.add_argument(
         "--max_workers",
         type=int,
         default=1,
@@ -152,6 +185,8 @@ def main():
 
     for mp3_file in tqdm(mp3_files, desc="Generating subtitles"):
         generate_subtitle(mp3_file, output_folder, args)
+
+    clean_subtitles(output_folder, output_folder / "clean_subs")
 
     logging.info("Subtitle generation complete")
 
