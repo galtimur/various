@@ -77,17 +77,18 @@ python generate_subtitles.py --input_folder /path/to/mp3s
 
 #### Arguments
 
-| Argument | Description                                              | Default |
-|----------|----------------------------------------------------------|---------|
-| `--input_folder` | Path to folder containing MP3 files              | *Required* |
-| `--output_folder` | Path to output folder for subtitle files        | Same as input folder |
-| `--gpu_id` | GPU ID to use for processing                           | 0 |
-| `--max_line_count` | Maximum lines in a single subtitle             | 2 |
-| `--max_words_per_line` | Maximum words in a single subtitle line    | 15 |
-| `--model` | Whisper model to use (tiny, small, medium, large, turbo) | turbo |
-| `--language` | Language code (e.g., en, ru, fr, de)                  | auto-detect |
-| `--parallel` | Flag to process files in parallel (Not used now)      | False |
-| `--max_workers` | Maximum number of parallel workers (Not used now)  | 1 |
+| Argument               | Description                                              | Default              |
+|------------------------|----------------------------------------------------------|----------------------|
+| `--input_folder`       | Path to folder containing MP3 files                      | *Required*           |
+| `--output_folder`      | Path to output folder for subtitle files                 | Same as input folder |
+| `--clean`              | To clean the subs from hallucinations                    | True                 |
+| `--gpu_id`             | GPU ID to use for processing                             | 0                    |
+| `--max_line_count`     | Maximum lines in a single subtitle                       | 2                    |
+| `--max_words_per_line` | Maximum words in a single subtitle line                  | 15                   |
+| `--model`              | Whisper model to use (tiny, small, medium, large, turbo) | turbo                |
+| `--language`           | Language code (e.g., en, ru, fr, de)                     | auto-detect          |
+| `--parallel`           | Flag to process files in parallel (Not used now)         | False                |
+| `--max_workers`        | Maximum number of parallel workers (Not used now)        | 1                    |
 
 ### Examples
 
