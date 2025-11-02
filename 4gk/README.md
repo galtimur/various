@@ -6,5 +6,17 @@ pip install playwright
 playwright install chromium
 ```
 
+## Set up
+
+To run this script you need get your JWT token from 4gk.ru. To do that
+1. login int the site, goto to package page. 
+2. open dev tools (F12 in windows), network tab.
+3. Start downloading the package file,
+4. copy the token from the network tab.
+
+provide your JWT tokein in .env file (`GQ_JWT=your_token`)
+
+## Run
+
 run:
-`python scrape_site.py --start_id= --num_packs=2 --out_dir=questions_packs`
+`python scrape_by_api.py --start_id=4000 --end_id=4002 [--num_packs=2]`

@@ -1,7 +1,12 @@
-import time, random
-import os, re, sys
-import pathlib, requests
+import time
+import random
+import os
+import re
+import sys
+import requests
+from pathlib import Path
 from dotenv import load_dotenv
+from fire import Fire
 
 load_dotenv()
 
@@ -9,11 +14,6 @@ BASE = "https://gotquestions.online"
 JWT  = os.environ.get("GQ_JWT")
 if not JWT: sys.exit("Set GQ_JWT first.")
 
-ids = list(range(5034, 6527))
-
-outdir = pathlib.Path("downloads"); outdir.mkdir(exist_ok=True)
-sess = requests.Session()
-sess.headers.update({"Authorization": f"JWT {JWT}", "Accept": "*/*"})
 
 def fname_from_cd(cd, fallback):
     if not cd: return fallback
@@ -25,17 +25,34 @@ def fname_from_cd(cd, fallback):
     if m: return m.group(1)
     return fallback
 
-for pack_id in ids:
-    path = outdir / (str(pack_id) + ".docx")
-    if path.exists():
-        continue
-    url = f"{BASE}/api/download/{pack_id}/"
-    r = sess.get(url, allow_redirects=True, timeout=60)
-    if r.status_code != 200:
-        print(f"[{pack_id}] HTTP {r.status_code}: {r.text[:200]}")
-        continue
-    name = fname_from_cd(r.headers.get("content-disposition"), f"pack_{pack_id}.docx")
-    safe = re.sub(r'[\\/:*?"<>|]+', "_", name)
-    path.write_bytes(r.content)
-    print(f"[{pack_id}] saved -> {path}")
-    time.sleep(random.uniform(0.5, 2.0))
+def main(start_id: int = 6281,
+         num_packs: int = 1494,
+         end_id: int | None = None,
+         outdir: str = "downloads"):
+
+    if not end_id:
+        end_id = start_id + num_packs
+    ids = list(range(start_id, end_id))
+
+    outdir = Path(outdir)
+    outdir.mkdir(exist_ok=True)
+    sess = requests.Session()
+    sess.headers.update({"Authorization": f"JWT {JWT}", "Accept": "*/*"})
+
+    for pack_id in ids:
+        path = outdir / (str(pack_id) + ".docx")
+        if path.exists():
+            continue
+        url = f"{BASE}/api/download/{pack_id}/"
+        r = sess.get(url, allow_redirects=True, timeout=60)
+        if r.status_code != 200:
+            print(f"[{pack_id}] HTTP {r.status_code}: {r.text[:200]}")
+            if r.status_code == 401:
+                break
+        # name = fname_from_cd(r.headers.get("content-disposition"), f"pack_{pack_id}.docx")
+        path.write_bytes(r.content)
+        print(f"[{pack_id}] saved -> {path}")
+        time.sleep(random.uniform(0.5, 2.0))
+
+if __name__ == "__main__":
+    Fire(main)
