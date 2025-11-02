@@ -1,6 +1,8 @@
-import re, json, zipfile, os
-from typing import List, Dict, Any
+import re, json, zipfile
+from pathlib import Path
+from typing import Any
 from collections.abc import Mapping, Sequence, Set
+from tqdm import tqdm
 
 import unicodedata
 
@@ -62,7 +64,7 @@ def clean_stress_in_values(obj):
     return obj
 
 
-def _read_docx_lines_python_docx(path: str) -> List[str] | None:
+def _read_docx_lines_python_docx(path: str) -> list[str] | None:
     try:
         from docx import Document  # type: ignore
     except Exception:
@@ -79,7 +81,7 @@ def _read_docx_lines_python_docx(path: str) -> List[str] | None:
     except Exception:
         return None
 
-def _read_docx_lines_zip_xml(path: str) -> List[str]:
+def _read_docx_lines_zip_xml(path: str) -> list[str]:
     import xml.etree.ElementTree as ET
     NS = {"w":"http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
     with zipfile.ZipFile(path) as zf:
@@ -113,13 +115,13 @@ def _match_key(line: str):
             return key, m.group(2).strip()
     return None, None
 
-def parse_questions_from_lines(lines: List[str]) -> Dict[str, Any]:
-    pack: Dict[str, Any] = {"title": None, "editors": [], "tours": [], "raw_preamble": []}
-    questions: List[Dict[str, Any]] = []
+def parse_questions_from_lines(lines: list[str]) -> dict[str, Any]:
+    pack: dict[str, Any] = {"title": None, "editors": [], "tours": [], "raw_preamble": []}
+    questions: list[dict[str, Any]] = []
 
     current_tour = None
     title_set = False
-    current_q: Dict[str, Any] | None = None
+    current_q: dict[str, Any] | None = None
     current_field: str | None = None
 
     def finalize_question():
@@ -199,7 +201,7 @@ def parse_questions_from_lines(lines: List[str]) -> Dict[str, Any]:
         pack["raw_preamble"] = "\n".join([x for x in pack["raw_preamble"] if x is not None])
     return {"pack": pack, "questions": questions}
 
-def parse_docx_to_json(path: str, out_path: str | None = None) -> Dict[str, Any]:
+def parse_docx_to_json(path: str, pack_id: int, out_path: str | None = None) -> dict[str, Any]:
     lines = _read_docx_lines_python_docx(path) or _read_docx_lines_zip_xml(path)
     # normalize blanks
     norm = []
@@ -213,7 +215,7 @@ def parse_docx_to_json(path: str, out_path: str | None = None) -> Dict[str, Any]
         else:
             norm.append(s); prev_blank = False
     data = parse_questions_from_lines(norm)
-    data["pack"]["source_file"] = os.path.basename(path)
+    data["pack"]["id"] = pack_id
 
     data = clean_stress_in_values(data)
 
@@ -221,3 +223,29 @@ def parse_docx_to_json(path: str, out_path: str | None = None) -> Dict[str, Any]
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
     return data
+
+def process_docx_files(indir: str, outdir: str=  "."):
+    inpath = Path(indir)
+    outpath = Path(outdir)
+    output_file = outpath / "all_data.jsonl"
+
+    docx_files = list(inpath.glob("*.docx"))
+    for docx_path in tqdm(docx_files, desc="Processing DOCX files", total=len(docx_files)):
+        pack_id = int(docx_path.stem)  # gets filename without extension
+        data = parse_docx_to_json(str(docx_path), pack_id)
+        questions = []
+        for q in data["questions"]:
+            if not (q.get("question") and q.get("answer")):
+                continue
+            answer = q.get("answer")
+            q["answer"] = answer.replace('"', '')
+            grading = q.get("grading")
+            if grading:
+                q["grading"] = grading.replace('"', '')
+            questions.append(q)
+        if not questions:
+            continue
+        data["num_questions"] = len(questions)
+        data["questions"] = questions
+        with open(output_file, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(data, ensure_ascii=False) + '\n')

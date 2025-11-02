@@ -7,6 +7,7 @@ import re
 import json
 from pathlib import Path
 from typing import Iterable
+from tqdm import tqdm
 
 from dotenv import load_dotenv
 from langchain_openai.chat_models import ChatOpenAI
@@ -14,45 +15,30 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
 
-word_list_file = "C:/Timur/GoogleDrive/Timur/Deutsch/words_B1.txt"
-
-address = "https://litellm.labs.jb.gg/"
-api_key = os.getenv("LITELLM_KEY")
-model_name = "gpt-5-nano"
-batch_size = 10
-system_prompt = "You are a helpful assistant that knows both German and Russian. Helpful translator"
-base_prompt = '''
-You're given a list of German words or short phrases, separated by a new line after the indicator WORDS_LIST. For each word generate a json {"word": word, "translation": translation of the word to Russian, "example": example of the word usage, "example_translation": translation of the example to russian}. Generated examples should not be templated; they should be natural phrases taken from the natural texts. Each JSON should start on a new line, forming a JSONL file. Start list of JSON dicts with indicator TRANSLATION_LIST```, then list translations of words in the list, end with indicator ```
-
-WORDS_LIST:
-'''
-
-with open(word_list_file, "r", encoding="utf-8") as f:
-    word_list = [line.strip() for line in f if line.strip()]
-word_list = list(set([re.sub(r" {2,}", " ", word) for word in word_list]))
-words_batches = [word_list[i:i + batch_size] for i in range(0, len(word_list), batch_size)]
-# ... existing code ...
-prompts = []
-messages = []
-for batch in words_batches:
-    batch_str = "\n".join(batch)
-    prompt = (base_prompt + batch_str).strip()
-    message = [SystemMessage(content=system_prompt), HumanMessage(content=prompt)]
-    prompts.append(prompt)
-    messages.append(message)
-# ... existing code ...
-llm = ChatOpenAI(base_url=address, api_key=api_key, model=model_name)
-# ... existing code ...
-short_mes = messages[:2]
-# ... existing code ...
-response = llm.batch(short_mes)
-# ... existing code ...
-
 # %%
 # Output paths
 RAW_RESPONSES_PATH = Path("raw_responses.jsonl")
-PARSED_JSONL_PATH = Path("parsed_items.jsonl")
+PARSED_JSONL_PATH = Path("vocab_cards_gpt5.jsonl")
 
+
+def get_words_batches(word_list_file, batch_size):
+    with open(word_list_file, "r", encoding="utf-8") as f:
+        word_list = [line.strip() for line in f if line.strip()]
+    word_list = list(set([re.sub(r" {2,}", " ", word) for word in word_list]))
+    words_batches = [word_list[i:i + batch_size] for i in range(0, len(word_list), batch_size)]
+
+    return words_batches
+
+def get_messages(words_batches, system_prompt, base_prompt):
+
+    messages = []
+    for batch in words_batches:
+        batch_str = "\n".join(batch)
+        prompt = (base_prompt + batch_str).strip()
+        message = [SystemMessage(content=system_prompt), HumanMessage(content=prompt)]
+        messages.append(message)
+
+    return messages
 
 def ensure_files():
     RAW_RESPONSES_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -118,22 +104,43 @@ def chunked(seq, n):
     for i in range(0, len(seq), n):
         yield seq[i:i + n]
 
-def main()
+def main():
+
+    word_list_file = "C:/Timur/GoogleDrive/Timur/Deutsch/words_B1.txt"
+
+    address = "https://litellm.labs.jb.gg/"
+    api_key = os.getenv("LITELLM_KEY")
+    model_name = "gpt-5"
+    batch_size = 10
+    batch_size_api = 16  # safety chunk for llm.batch if needed
+    system_prompt = "You are a helpful assistant that knows both German and Russian. Helpful translator"
+    base_prompt = '''
+    You're given a list of German words or short phrases, separated by a new line after the indicator WORDS_LIST. For each word generate a json {"word": word, "translation": translation of the word to Russian, "example": example of the word usage, "example_translation": translation of the example to russian}. Generated examples should not be templated; they should be natural phrases taken from the natural texts. Each JSON should start on a new line, forming a JSONL file. Start list of JSON dicts with indicator TRANSLATION_LIST```, then list translations of words in the list, end with indicator ```
+
+    WORDS_LIST:
+    '''
+
+    llm = ChatOpenAI(base_url=address, api_key=api_key, model=model_name)
+
+    words_batches = get_words_batches(word_list_file, batch_size)
+    messages_all = get_messages(words_batches, system_prompt, base_prompt)
+
+
     # Main loop: iterate over all messages, invoke LLM, save raw, parse and save parsed
     ensure_files()
 
-    all_messages = messages  # use full dataset; adjust to short_mes for a quick dry run
-    batch_size_api = 16  # safety chunk for llm.batch if needed
-
-
-    for chunk in chunked(all_messages, batch_size_api):
+    for chunk in tqdm(chunked(messages_all, batch_size_api), total=len(messages_all) // batch_size_api + 1):
         # Invoke LLM on a chunk of messages
         responses = llm.batch(chunk)
         # responses is a list aligning with chunk
         for resp in responses:
             # 1) Save raw response text
             text = getattr(resp, "content", "") if resp is not None else ""
+            if not text:
+                continue
             append_lines(RAW_RESPONSES_PATH, [text])
+            with open(RAW_RESPONSES_PATH, "a", encoding="utf-8") as f:
+                f.write("\n" + 40 * "-" + "\n")
 
             # 2) Extract the JSONL block and parse
             block = extract_translation_block(text)
@@ -143,6 +150,5 @@ def main()
             if parsed_items:
                 append_lines(PARSED_JSONL_PATH, [json.dumps(obj, ensure_ascii=False) for obj in parsed_items])
 
-# %%
-print(f"Appended raw responses to: {RAW_RESPONSES_PATH.resolve()}")
-print(f"Appended parsed JSON lines to: {PARSED_JSONL_PATH.resolve()}")
+if __name__ == "__main__":
+    main()
