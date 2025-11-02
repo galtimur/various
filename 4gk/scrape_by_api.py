@@ -9,7 +9,7 @@ BASE = "https://gotquestions.online"
 JWT  = os.environ.get("GQ_JWT")
 if not JWT: sys.exit("Set GQ_JWT first.")
 
-ids = list(range(5000, 6000))
+ids = list(range(5034, 6527))
 
 outdir = pathlib.Path("downloads"); outdir.mkdir(exist_ok=True)
 sess = requests.Session()
@@ -26,6 +26,9 @@ def fname_from_cd(cd, fallback):
     return fallback
 
 for pack_id in ids:
+    path = outdir / (str(pack_id) + ".docx")
+    if path.exists():
+        continue
     url = f"{BASE}/api/download/{pack_id}/"
     r = sess.get(url, allow_redirects=True, timeout=60)
     if r.status_code != 200:
@@ -33,7 +36,6 @@ for pack_id in ids:
         continue
     name = fname_from_cd(r.headers.get("content-disposition"), f"pack_{pack_id}.docx")
     safe = re.sub(r'[\\/:*?"<>|]+', "_", name)
-    path = outdir / (str(pack_id) + "docx")
     path.write_bytes(r.content)
     print(f"[{pack_id}] saved -> {path}")
     time.sleep(random.uniform(0.5, 2.0))
