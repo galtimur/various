@@ -199,7 +199,8 @@ def parse_questions_from_lines(lines: list[str]) -> dict[str, Any]:
     finalize_question()
     if isinstance(pack["raw_preamble"], list):
         pack["raw_preamble"] = "\n".join([x for x in pack["raw_preamble"] if x is not None])
-    return {"pack": pack, "questions": questions}
+    pack["questions"] = questions
+    return pack
 
 def parse_docx_to_json(path: str, pack_id: int, out_path: str | None = None) -> dict[str, Any]:
     lines = _read_docx_lines_python_docx(path) or _read_docx_lines_zip_xml(path)
@@ -215,7 +216,7 @@ def parse_docx_to_json(path: str, pack_id: int, out_path: str | None = None) -> 
         else:
             norm.append(s); prev_blank = False
     data = parse_questions_from_lines(norm)
-    data["pack"]["id"] = pack_id
+    data["pack_id"] = pack_id
 
     data = clean_stress_in_values(data)
 

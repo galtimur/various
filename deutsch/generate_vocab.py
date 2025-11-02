@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 from typing import Iterable
 from tqdm import tqdm
+import csv
 
 from dotenv import load_dotenv
 from langchain_openai.chat_models import ChatOpenAI
@@ -103,6 +104,22 @@ def append_lines(path: Path, lines: Iterable[str]) -> None:
 def chunked(seq, n):
     for i in range(0, len(seq), n):
         yield seq[i:i + n]
+
+def write_vocab_csv(records, csv_path):
+    fieldnames = ["word", "translation", "example", "example_translation"]
+    with open(csv_path, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';', quoting=csv.QUOTE_ALL)
+        # writer.writeheader()
+        for r in records:
+            try:
+                writer.writerow({
+                    "word": r["word"].replace('"', ''),
+                    "translation": r["translation"].replace('"', ''),
+                    "example": r["example"].replace('"', ''),
+                    "example_translation": r["example_translation"].replace('"', ""),
+                })
+            except Exception as e:
+                pass
 
 def main():
 
