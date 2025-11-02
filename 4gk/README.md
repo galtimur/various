@@ -10,7 +10,7 @@ playwright install chromium
 
 To run this script you need get your JWT token from 4gk.ru. To do that
 1. login int the site, goto to package page. 
-2. open dev tools (F12 in windows), network tab.
+2. open dev tools (F12 in windows), network tab, find Authorization JWT token (note, it expires in ~20-30 min)
 3. Start downloading the package file,
 4. copy the token from the network tab.
 

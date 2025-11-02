@@ -49,7 +49,7 @@ def main(start_id: int = 5000,
             print(f"[{pack_id}] HTTP {r.status_code}: {r.text[:200]}")
             if r.status_code == 401:
                 break
-        # name = fname_from_cd(r.headers.get("content-disposition"), f"pack_{pack_id}.docx")
+            continue
         path.write_bytes(r.content)
         print(f"[{pack_id}] saved -> {path}")
         time.sleep(random.uniform(0.5, 2.0))
