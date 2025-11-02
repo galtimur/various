@@ -16,7 +16,11 @@ To run this script you need get your JWT token from 4gk.ru. To do that
 
 provide your JWT tokein in .env file (`GQ_JWT=your_token`)
 
-## Run
+## Download docx
 
 run:
 `python scrape_by_api.py --start_id=4000 --end_id=4002 [--num_packs=2]`
+
+## Parse docs
+
+For that the script `parse_docx.py` is used.

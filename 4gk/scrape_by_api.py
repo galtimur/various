@@ -25,14 +25,14 @@ def fname_from_cd(cd, fallback):
     if m: return m.group(1)
     return fallback
 
-def main(start_id: int = 6281,
-         num_packs: int = 1494,
+def main(start_id: int = 5000,
+         num_packs: int = 2,
          end_id: int | None = None,
          outdir: str = "downloads"):
 
     if not end_id:
         end_id = start_id + num_packs
-    ids = list(range(start_id, end_id))
+    ids = list(range(start_id, end_id+1))
 
     outdir = Path(outdir)
     outdir.mkdir(exist_ok=True)
