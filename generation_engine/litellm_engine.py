@@ -41,12 +41,11 @@ class LiteLLMEngine:
         self.name = model_name
 
         lite_llm_host = "https://litellm.labs.jb.gg/"
-        timeout = 60
+        timeout = 180
 
         # TODO add parameters
         self.client = openai.OpenAI(
-            api_key=api_key, base_url=lite_llm_host, timeout=timeout
-        )
+            api_key=api_key, base_url=lite_llm_host) #, timeout=timeout)
         connect_exists = test_connection(self.client)
         if not connect_exists:
             raise ConnectionError("Connection to LiteLLM proxy server failed.")

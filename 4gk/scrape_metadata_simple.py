@@ -181,7 +181,7 @@ async def amain(
     os.makedirs(out_dir, exist_ok=True)
     if not end_id:
         end_id = start_id + num_packs
-    pack_ids = list(range(start_id, end_id))
+    pack_ids = list(range(start_id, end_id))[::-1]
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
